@@ -1,19 +1,22 @@
 from fastapi import FastAPI
 
+from app.core.config import settings
+
 
 app = FastAPI(
-    title="BUGHUGE",
+    title=settings.app_name,
     description="Automated Vulnerability Intelligence Engine",
-    version="0.1.0",
+    version=settings.app_version,
 )
 
 
 @app.get("/")
 def root():
     return {
-        "name": "BUGHUGE",
+        "name": settings.app_name,
         "description": "Automated Vulnerability Intelligence Engine",
-        "version": "0.1.0",
+        "version": settings.app_version,
+        "environment": settings.app_env,
         "status": "operational",
     }
 
